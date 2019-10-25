@@ -4,6 +4,7 @@
 .global SysTick_Handler
 SysTick_Handler:
 	//store user stack to process stack pointer
+	mrs r0, psp
 	stmdb r0!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
 
 	//load kernel stack from main stack pointer
