@@ -6,10 +6,29 @@
 
 void SysTick_Handler(void)
 {
-	GPIO_ToggleBits(GPIOD, GPIO_Pin_12);
-	GPIO_ToggleBits(GPIOD, GPIO_Pin_13);	
-	GPIO_ToggleBits(GPIOD, GPIO_Pin_14);
-	GPIO_ToggleBits(GPIOD, GPIO_Pin_15);
+}
+
+void delay(uint32_t count)
+{
+	while(count--);
+}
+
+void led_blink_task(void)
+{
+	int state = 1;
+
+	while(1) {
+		GPIO_WriteBit(GPIOD, GPIO_Pin_12, state);
+		delay(10000000L);
+		GPIO_WriteBit(GPIOD, GPIO_Pin_13, state);
+		delay(10000000L);
+		GPIO_WriteBit(GPIOD, GPIO_Pin_14, state);
+		delay(10000000L);
+		GPIO_WriteBit(GPIOD, GPIO_Pin_15, state);
+		delay(10000000L);
+
+		state = (state + 1) % 2;
+        }
 }
 
 int main(void)
@@ -17,9 +36,8 @@ int main(void)
 	gpio_init();
 	uart3_init();
 
-	SysTick_Config(168000000 / 50);
-
-	while(1);
+	rtos_create_task(led_blink_task, "led task", 0);
+	rtos_start();
 
 	return 0;
 }

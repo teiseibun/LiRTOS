@@ -3,6 +3,7 @@ BIN_IMAGE=lirtos.bin
 
 CC=arm-none-eabi-gcc
 OBJCOPY=arm-none-eabi-objcopy
+GDB=arm-none-eabi-gdb
 
 CFLAGS=-g -mlittle-endian -mthumb \
 	-mcpu=cortex-m4 \
@@ -35,6 +36,7 @@ SRC+=./lib/STM32F4xx_StdPeriph_Driver/src/misc.c \
 	./lib/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_i2c.c
 
 SRC+=./kernel.c \
+	./context_switch.s \
 	./test_drivers.c \
 	./main.c
 
