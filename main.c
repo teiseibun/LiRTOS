@@ -27,7 +27,7 @@ void gpio_init(void)
 int main()
 {
 	gpio_init();
-	SysTick_Config(16800000);
+	SysTick_Config(168000000 / 50);
 
 	while(1);
 

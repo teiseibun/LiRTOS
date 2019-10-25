@@ -34,7 +34,8 @@ SRC+=./lib/STM32F4xx_StdPeriph_Driver/src/misc.c \
 	./lib/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.c \
 	./lib/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_i2c.c
 
-SRC+=./main.c
+SRC+=./kernel.c \
+	./main.c
 
 STARTUP=./startup.s
 STARTUP_OBJ = startup.o
