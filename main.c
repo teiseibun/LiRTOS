@@ -4,10 +4,6 @@
 #include "rtos.h"
 #include "test_drivers.h"
 
-void SysTick_Handler(void)
-{
-}
-
 void delay(uint32_t count)
 {
 	while(count--);
