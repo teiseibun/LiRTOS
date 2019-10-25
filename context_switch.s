@@ -3,7 +3,12 @@
 .type SysTick_Handler, %function
 .global SysTick_Handler
 SysTick_Handler:
-	//load kernel stack	
+	//store user stack to process stack pointer
+	stmdb r0!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
+
+	//load kernel stack from main stack pointer
+	pop {r4, r5, r6, r7, r8, r9, r10, r11, ip, lr}
+	msr psr_nzcvq, ip
 
 	bx lr //back to the kernel
 

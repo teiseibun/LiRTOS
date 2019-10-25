@@ -1,9 +1,11 @@
 EXECUTABLE=lirtos.elf
 BIN_IMAGE=lirtos.bin
+DUMP_LOG=lirtos.dump
 
 CC=arm-none-eabi-gcc
 OBJCOPY=arm-none-eabi-objcopy
 GDB=arm-none-eabi-gdb
+OBJDUMP=arm-none-eabi-objdump
 
 CFLAGS=-g -mlittle-endian -mthumb \
 	-mcpu=cortex-m4 \
@@ -76,5 +78,10 @@ openocd:
 
 gdbauto:
 	cgdb -d $(GDB) -x ./gdb/openocd_gdb.gdb
+
+objdump:
+	make all
+	rm -rf $(DUMP_LOG)
+	$(OBJDUMP) -d $(EXECUTABLE) >> $(DUMP_LOG)
 
 .PHONY:all clean flash
