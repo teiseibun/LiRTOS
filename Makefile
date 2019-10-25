@@ -1,5 +1,5 @@
-EXECUTABLE=rtos.elf
-BIN_IMAGE=rtos.bin
+EXECUTABLE=lirtos.elf
+BIN_IMAGE=lirtos.bin
 
 CC=arm-none-eabi-gcc
 OBJCOPY=arm-none-eabi-objcopy
@@ -35,6 +35,7 @@ SRC+=./lib/STM32F4xx_StdPeriph_Driver/src/misc.c \
 	./lib/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_i2c.c
 
 SRC+=./kernel.c \
+	./test_drivers.c \
 	./main.c
 
 STARTUP=./startup.s
