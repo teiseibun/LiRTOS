@@ -25,7 +25,7 @@ typedef struct _rtos_tcb_t_ {
 int rtos_create_task(void (*task_handler)(void), char *task_name, uint8_t priority);
 void rtos_start(void);
 
-void switch_user_task(uint32_t *stack);
+void switch_user_task(uint32_t **stack);
 
 #endif
 

@@ -39,7 +39,7 @@ void rtos_start(void)
 	SysTick_Config(CPU_CLOCK / OS_SCHEDULER_FREQ);
 
 	while(1) {
-		switch_user_task(tasks[0].sp);
+		switch_user_task(&tasks[0].sp);
 
 		char *s = "hello kernel\n\r";
 		uart3_puts(s, strlen(s));
