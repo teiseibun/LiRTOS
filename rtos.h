@@ -12,6 +12,7 @@ enum {TASK_READY = 0, TASK_RUNNING = 1} task_state;
 
 typedef struct _rtos_tcb_t_ {
 	uint32_t stack[TASK_STACK_SIZE];
+	uint32_t *sp;
 
 	uint8_t id;
 	uint8_t status;
